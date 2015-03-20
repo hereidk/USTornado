@@ -106,7 +106,7 @@ class Tornado(object):
     
     #Import tornado data lat/lon from .csv file  
     def import_data(self):
-        data = np.loadtxt('1950_2011StartTracks.csv',delimiter=',')
+        data = np.loadtxt('1950_2011StartTracks.csv',delimiter=',',skiprows=1)
         lat = data[:,0]
         lon = data[:,1]
         return lat, lon
