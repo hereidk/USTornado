@@ -9,6 +9,7 @@ import random
 import math
 import bisect
 
+
 class Tornado(object):
     '''
     classdocs

@@ -10,15 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 
-#Import tornado data lat/lon from .csv file
-if __name__ == '__main__':
-    length = 57217
-    data = np.empty([length,2])
-    with open('1950_2011StartTracks.csv', 'rb') as inf:
-        data[:] = [(float(row['Lat']), row['Lon']) for row in csv.DictReader(inf)]
-    lat = data[:,0]
-    lon = data[:,1]
-   
+
 # Boxsum smoothing function    
 def boxsum(img, w, h, r):
     st = [0] * (w+1) * (h+1)
@@ -83,5 +75,15 @@ def generate_graph():
 
 
 if __name__=='__main__':
+    
+    # Import tornado data lat/lon from .csv file
+    length = 57217
+    data = np.empty([length,2])
+    with open('1950_2011StartTracks.csv') as inf:
+        data[:] = [(float(row['Lat']), row['Lon']) for row in csv.DictReader(inf)]
+    lat = data[:,0]
+    lon = data[:,1]
+    
+    # Plot results
     generate_graph()
     plt.show()

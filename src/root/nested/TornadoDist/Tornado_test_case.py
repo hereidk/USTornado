@@ -3,7 +3,7 @@ Created on Aug 21, 2012
 
 @author: kahere
 '''
-from root.nested.Tornado import Tornado
+from root.nested.TornadoDist import Tornado
 import matplotlib.pyplot as plt
 import random
 
@@ -25,9 +25,9 @@ if __name__ == '__main__':
     event_count = int(random.gauss(PDO_mean, PDO_stdev))
     print (event_count)
     for i in range(1,event_count):
-        test = Tornado();
-        start = test.startpt;
-        finish = test.endpt;
+        test = Tornado
+        start = test.startpt
+        finish = test.endpt
         x = [start[1], finish[1]]
         y = [start[0], finish[0]]
         if test.intensity == 3:
