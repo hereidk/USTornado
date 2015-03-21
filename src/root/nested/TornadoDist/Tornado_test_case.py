@@ -9,11 +9,14 @@ import random
 
 
 if __name__ == '__main__':
+    # Set window size
     view_ymin = 20
     view_ymax = 55
     view_xmin = -130
     view_xmax = -65
     
+    
+    # Set center of event count distribution based on PDO phase
     PDO_phase = -1
     if PDO_phase < 0:
         PDO_mean = 65.4285714285714
@@ -22,8 +25,11 @@ if __name__ == '__main__':
         PDO_mean = 42.20588235
         PDO_stdev = 16.02040254
     
+    # Set count for year using Gaussian distribution
     event_count = int(random.gauss(PDO_mean, PDO_stdev))
     print (event_count)
+    
+    # For each event, set a path and intensity
     for i in range(1,event_count):
         test = Tornado()
         start = test.startpt
@@ -36,8 +42,9 @@ if __name__ == '__main__':
             plt.plot(x, y, 'k-', linewidth = 2)
         elif test.intensity == 5:
             plt.plot(x, y, 'r-', linewidth = 2)
+            
     zd = test.generate_grid()
-    plt.imshow(zd, origin='lower', extent=[view_xmin, view_xmax, view_ymin, view_ymax])
     
-    
+    # Plot results
+    plt.imshow(zd, origin='lower', extent=[view_xmin, view_xmax, view_ymin, view_ymax])   
     plt.show()
