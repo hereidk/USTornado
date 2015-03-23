@@ -9,6 +9,7 @@ import csv
 import numpy as np
 import matplotlib.pyplot as plt
 import time
+from pysal.esda import smoothing as sm
 
 
 # Boxsum smoothing function    
@@ -72,6 +73,24 @@ def generate_graph():
     plt.title('boxsum smoothing - '+str(time.clock()-t0)+"sec")
     plt.imshow(zd, origin='lower', extent=[view_xmin, view_xmax, view_ymin, view_ymax])
 #    plt.scatter(xlvis, ylvis) # show points in original dataset
+
+def adaptive_Radius():
+    # Vary radius of smooth based on pt density
+    # Come back to update this later
+    '''
+    http://www.pysal.org/users/tutorials/smoothing.html#non-parametric-smoothing
+    Non-parametric Smoothing
+    Non-parametric smoothing methods compute rates without making any assumptions of distributional properties of rate estimates. A representative method in this approach is spatial filtering. PySAL provides the most simplistic form of spatial filtering where a user-specified grid is imposed on the data set and a moving window withi a fixed or adaptive radius visits each vertex of the grid to compute the rate at the vertex. Using the previous SIDS example, we can use Spatial_Filtering class:
+
+    bbox = [sids.bbox[:2], sids.bbox[2:]]
+    rate = sm.Spatial_Filtering(bbox, sids_d, e, b, 10, 10, r=1.5)
+    rate.r
+    array([ 0.00152555,  0.00079271,  0.00161253,  0.00161253,  0.00139513,
+        0.00139513,  0.00139513,  0.00139513,  0.00139513,  0.00156348,
+        ...
+        0.00240216,  0.00237389,  0.00240641,  0.00242211,  0.0024854 ,
+        0.00255477,  0.00266573,  0.00288918,  0.0028991 ,  0.00293492])
+    '''
 
 
 if __name__=='__main__':
